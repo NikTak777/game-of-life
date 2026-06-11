@@ -92,16 +92,26 @@ int main()
 
     //Game.InitializePattern("glider");
 
+    unsigned int generation = 1;
+
     while (true) {
         Game.PrintArea();
         next_step(Game.count, Game.area, Game.Hight, Game.Width, Game.new_area);
 
         if (!Game.UpdateFrame()) {
-            cout << "Game over! Simulation stopped" << endl;
+            cout << "==================================================" << endl;
+            cout << " Game over! Simulation stabilized at generation " << generation << "!" << endl;
+            cout << "==================================================" << endl;
             break;
         }
+        else {
+            cout << "==================================================" << endl;
+            cout << "   Generation: " << generation << "   |   Press Ctrl+C to exit" << endl;
+            cout << "==================================================" << endl;
+        }
 
-        Sleep(1000);
+        generation++;
+        Sleep(500);
         system("cls");
     }
     system("pause");
